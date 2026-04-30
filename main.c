@@ -1,21 +1,16 @@
 #include <stdio.h>
 #include "waveform.h"
+#include "io.h"
 
-int main(void) {
+int main() {
+    FILE *fp = fopen("power_quality_log.csv","r"); //opening required csv file
+    if (fp == NULL) {
+        printf("Error: file not found\n");
+        return 1; //process terminates here
+    }
 
-
-
-FILE *fptr;
-
-fptr = fopen("C:\\Users\\wf2-chen\\CLionProjects\\waveform-analyser-tb2\\power_quality_log.csv", "r");
-
-if (fptr == NULL) {
-    printf("The file is not opened.");
-}
-else {
-    printf("The file has been opened.");
-}
+    int count = 0; // setting counter at value: 0
 
 
-return 0;
+    return 0;
 }
