@@ -7,17 +7,20 @@
 
 
 struct WaveformSample {
-    char timestamp;
+    double timestamp;
     double phase_A_voltage;
     double phase_B_voltage;
     double phase_C_voltage;
     double line_current;
     double frequency;
     double power_factor;
-    double thd_percent; ///Used double to avoid rounding errors and increased accuracy///
+    double thd_percent; //Used double to avoid rounding errors and increased accuracy
 };
 
-float calc_average(const struct WaveformSample *samples, int count);
-float calc_max(const struct WaveformSample *samples, int count);
+double compute_rms(const double *values, int count);
+double compute_mean(const double *values, int count);
+double compute_peak_to_peak(const double *values, int count);
+int detect_clipping(const double *values, int count, double threshold);
+int check_tolerance(double rms, double nominal);
 
 #endif

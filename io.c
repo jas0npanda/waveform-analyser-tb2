@@ -3,3 +3,7 @@
 //
 
 #include "io.h"
+#include <stdlib.h>
+
+#define MAX_LINE 256
+
