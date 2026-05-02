@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include "waveform.h"
 
-struct WaveformSample* load_csv(const char * filename, int *out_count);
+struct WaveformSample* load_csv(const char *filename, int *out_count);
 
 void write_results(const char *filename,
                     double rms_a, double rms_b, double rms_c,
