@@ -14,7 +14,6 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
         return NULL;
 
     char line[max_line];
-
     int count = 0; //Counter for no. of rows
 
     fgets(line, max_line, fp); //Skipping header line
@@ -22,12 +21,15 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
     while (fgets(line, max_line, fp))
         count ++;
 
+    rewind(fp);
+    fgets(line, max_line, fp); //Skip header line again
+
     struct WaveformSample* samples = malloc(count * sizeof(struct WaveformSample));
     if (!samples) return NULL;
 
     int i = 0; //i acts as a counter
     while (fgets(line, max_line, fp)) {
-        scanf(line, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",
+        sscanf(line, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",
             &samples[i].timestamp,
             &samples[i].phase_A_voltage,
             &samples[i].phase_B_voltage,
@@ -36,9 +38,14 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
             &samples[i].frequency,
             &samples[i].power_factor,
             &samples[i].thd_percent);
+
+        printf("Parsed A as: %f\n", samples[i].phase_A_voltage);
+
         i++; //counter incremented by one
 
     }
+
+
 
     fclose(fp);
     *out_count = count;
