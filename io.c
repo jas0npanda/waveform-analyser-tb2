@@ -22,5 +22,26 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
     while (fgets(line, max_line, fp))
         count ++;
 
+    struct WaveformSample* samples = malloc(count * sizeof(struct WaveformSample));
+    if (!samples) return NULL;
+
+    int i = 0; //i acts as a counter
+    while (fgets(line, max_line, fp)) {
+        scanf(line, "%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",
+            &samples[i].timestamp,
+            &samples[i].phase_A_voltage,
+            &samples[i].phase_B_voltage,
+            &samples[i].phase_C_voltage,
+            &samples[i].line_current,
+            &samples[i].frequency,
+            &samples[i].power_factor,
+            &samples[i].thd_percent);
+        i++; //counter incremented by one
+
+    }
+
+    fclose(fp);
+    *out_count = count;
+    return samples;
 
 }

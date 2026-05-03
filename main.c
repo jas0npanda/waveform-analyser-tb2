@@ -2,7 +2,7 @@
 #include "waveform.h"
 #include "io.h"
 int main(int argc, char *argv[]) {
-    printf("Program started\n");
+    printf("Waveform Analyser started\n");
 
     // Check command-line arguments
     if (argc < 2) {
@@ -25,4 +25,5 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Loaded %d samples\n", count);
+
 }
