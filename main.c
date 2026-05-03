@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
     double dc_a = compute_mean(a, count);
     int clip_a = detect_clipping(a, count, 324.9); //threshold clipping value from brief
 
-    printf("RMS A: %lf, Peak-to-Peak A: %lf, DC Offset A: %lf, Clipping A: %d\n",
+    printf("RMS A: %lf, Peak-to-Peak A: %lf, DC Offset A: %.20lf, Clipping A: %d\n",
            rms_a, p2p_a, dc_a, clip_a);
 
 
