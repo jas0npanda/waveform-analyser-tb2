@@ -61,7 +61,7 @@ void write_results(const char *filename, //Calling from io.h
     fprintf(fp, "RMS A: %.15lf\nRMS B: %.15lf\nRMS C: %.15f\n", rms_a, rms_b, rms_c);
     fprintf(fp, "Peak-to-Peak A: %.15f\nPeak-to-Peak B: %.15f\nPeak-to-Peak C: %.15f\n", p2p_a, p2p_b, p2p_c);
     fprintf(fp, "DC Offset A: %.15f\nDC Offset B: %.15f\nDC Offset C: %.15f\n", dc_a, dc_b, dc_c);
-    fprintf(fp, "Clipping A: %d\nClipping B: %d\nClipping C: %d\n",clip_a, clip_b, clip_c);
+    fprintf(fp, "Clipping values A: %d\nClipping values B: %d\nClipping values C: %d\n",clip_a, clip_b, clip_c);
 
     fclose(fp);
 }

@@ -64,13 +64,13 @@ int main(int argc, char *argv[]) {
     int clip_c = detect_clipping(c, count, 324.9);
 
 
-    printf("RMS A: %.8lf, Peak-to-Peak A: %.8lf, DC Offset A: %.20lf, Clipping A: %d\n",
+    printf("RMS A: %.8lf, Peak-to-Peak A: %.8lf, DC Offset A: %.20lf, Clipping values found in A: %d\n",
            rms_a, p2p_a, dc_a, clip_a);
 
-    printf("RMS B: %.8lf, Peak-to-Peak B: %.8lf, DC Offset B: %.20lf, Clipping B: %d\n",
+    printf("RMS B: %.8lf, Peak-to-Peak B: %.8lf, DC Offset B: %.20lf, Clipping values found in B: %d\n",
            rms_b, p2p_b, dc_b, clip_b);
 
-    printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping C: %d\n",
+    printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping values found in C: %d\n",
            rms_c, p2p_c, dc_c, clip_c);
 
     write_results("waveform_results.txt",

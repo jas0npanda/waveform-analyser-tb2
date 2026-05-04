@@ -35,12 +35,13 @@ double compute_peak_to_peak(const double *values, int count) {
 }
 
 int detect_clipping(const double *values, int count, double threshold) {
+    int clipped_values = 0;
     for (int i = 0; i < count; i++) {
         if (values[i] >= threshold || values[i] <= -threshold) {
-            return 1;
+            clipped_values++;
         }
     }
-    return 0;
+    return clipped_values;
 }
 
 int check_tolerance(double rms, double nominal) {
