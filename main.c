@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
         free(a);
         free(b);
         free(c);
-        free(sample);
+        free(sample); //Free memory
         return 1;
     }
 
@@ -48,13 +48,35 @@ int main(int argc, char *argv[]) {
     }
 
     double rms_a = compute_rms(a, count);
-    double p2p_a = compute_peak_to_peak(a, count);
-    double dc_a = compute_mean(a, count);
-    int clip_a = detect_clipping(a, count, 324.9); //threshold clipping value from brief
+    double rms_b = compute_rms(b, count);
+    double rms_c = compute_rms(c, count);//Calculating rms values
 
-    printf("RMS A: %lf, Peak-to-Peak A: %lf, DC Offset A: %.20lf, Clipping A: %d\n",
+    double p2p_a = compute_peak_to_peak(a, count);
+    double p2p_b = compute_peak_to_peak(b, count);
+    double p2p_c = compute_peak_to_peak(c, count);
+
+    double dc_a = compute_mean(a, count);
+    double dc_b = compute_mean(b, count);
+    double dc_c = compute_mean(c, count);
+
+    int clip_a = detect_clipping(a, count, 324.9); //threshold clipping value from brief
+    int clip_b = detect_clipping(b, count, 324.9);
+    int clip_c = detect_clipping(c, count, 324.9);
+
+
+    printf("RMS A: %.8lf, Peak-to-Peak A: %.8lf, DC Offset A: %.20lf, Clipping A: %d\n",
            rms_a, p2p_a, dc_a, clip_a);
 
+    printf("RMS B: %.8lf, Peak-to-Peak B: %.8lf, DC Offset B: %.20lf, Clipping B: %d\n",
+           rms_b, p2p_b, dc_b, clip_b);
+
+    printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping C: %d\n",
+           rms_c, p2p_c, dc_c, clip_c);
+
+    free(a);
+    free(b);
+    free(c);
+    free(sample); //Free memory
 
     return 0;
 }

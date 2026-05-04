@@ -39,7 +39,7 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
             &samples[i].power_factor,
             &samples[i].thd_percent);
 
-        printf("Parsed A as: %f\n", samples[i].phase_A_voltage);
+        //printf("Parsed A as: %f\n", samples[i].phase_A_voltage); //Debug message used in testing
 
         i++; //counter incremented by one
 
