@@ -51,6 +51,10 @@ int main(int argc, char *argv[]) {
     double rms_b = compute_rms(b, count);
     double rms_c = compute_rms(c, count);//Calculating rms values
 
+    int tolerance_a = check_tolerance(rms_a, 230);
+    int tolerance_b = check_tolerance(rms_b, 230);
+    int tolerance_c = check_tolerance(rms_c, 230);
+
     double p2p_a = compute_peak_to_peak(a, count);
     double p2p_b = compute_peak_to_peak(b, count);
     double p2p_c = compute_peak_to_peak(c, count);
@@ -73,6 +77,10 @@ int main(int argc, char *argv[]) {
     printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping values found in C: %d\n",
            rms_c, p2p_c, dc_c, clip_c);
 
+    printf("RMS A within tolerance: %d\n", tolerance_a);
+    printf("RMS B within tolerance: %d\n", tolerance_b);
+    printf("RMS C within tolerance: %d\n", tolerance_c);
+
     free(a);
     free(b);
     free(c);
@@ -82,7 +90,8 @@ int main(int argc, char *argv[]) {
         rms_a, rms_b, rms_c,
         p2p_a, p2p_b, p2p_c,
         dc_a, dc_b, dc_c,
-        clip_a, clip_b, clip_c);
+        clip_a, clip_b, clip_c,
+        tolerance_a, tolerance_b, tolerance_c);
 
 
     printf("Power quality log analysed successfully.\n");

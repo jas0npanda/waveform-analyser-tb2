@@ -7,7 +7,7 @@
 #include <math.h> //Additional existing library used for mathematical functions
 
 
-double compute_mean(const double *values, int count) {
+double compute_mean(const double *values, int count) { //Dc offset
     double sum = 0.0;
     for (int i = 0; i < count; i++) {
         sum += values[i];
@@ -16,7 +16,7 @@ double compute_mean(const double *values, int count) {
 }
 
 double compute_rms(const double *values, int count) {
-    double sum_sq = 0.0;
+    double sum_sq = 0.0; //Math function utilised
     for (int i = 0; i < count; i++) {
         sum_sq += values[i] * values[i];
     }

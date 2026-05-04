@@ -18,7 +18,7 @@ struct WaveformSample {
     double thd_percent; //Used double to avoid rounding errors and increased accuracy
 };
 
-double compute_rms(const double *values, int count);
+double compute_rms(const double *values, int count); //Defining methods found in brief
 double compute_mean(const double *values, int count);
 double compute_peak_to_peak(const double *values, int count);
 int detect_clipping(const double *values, int count, double threshold);

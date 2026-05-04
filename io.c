@@ -54,7 +54,8 @@ void write_results(const char *filename, //Calling from io.h
                double rms_a, double rms_b, double rms_c,
                double p2p_a, double p2p_b, double p2p_c,
                double dc_a, double dc_b, double dc_c,
-               int clip_a, int clip_b, int clip_c) {
+               int clip_a, int clip_b, int clip_c,
+               int tolerance_a, int tolerance_b, int tolerance_c) {
     FILE *fp = fopen(filename, "w");
     if (!fp) return;
 
@@ -62,6 +63,9 @@ void write_results(const char *filename, //Calling from io.h
     fprintf(fp, "Peak-to-Peak A: %.15f\nPeak-to-Peak B: %.15f\nPeak-to-Peak C: %.15f\n", p2p_a, p2p_b, p2p_c);
     fprintf(fp, "DC Offset A: %.15f\nDC Offset B: %.15f\nDC Offset C: %.15f\n", dc_a, dc_b, dc_c);
     fprintf(fp, "Clipping values A: %d\nClipping values B: %d\nClipping values C: %d\n",clip_a, clip_b, clip_c);
+    fprintf(fp,"RMS A within tolerance: %d\n", tolerance_a);
+    fprintf(fp,"RMS B within tolerance: %d\n", tolerance_b);
+    fprintf(fp,"RMS C within tolerance: %d\n", tolerance_c);
 
     fclose(fp);
 }
