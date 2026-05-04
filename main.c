@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "waveform.h"
 #include "io.h"
+#include "waveform.h"
 int main(int argc, char *argv[]) {
     printf("Waveform Analyser started\n");
 
@@ -72,6 +72,13 @@ int main(int argc, char *argv[]) {
 
     printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping C: %d\n",
            rms_c, p2p_c, dc_c, clip_c);
+
+    write_results("waveform_results.txt",
+        rms_a, rms_b, rms_c,
+        p2p_a, p2p_b, p2p_c,
+        dc_a, dc_b, dc_c,
+        clip_a, clip_b, clip_c);
+
 
     free(a);
     free(b);

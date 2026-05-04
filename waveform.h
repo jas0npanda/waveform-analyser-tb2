@@ -6,6 +6,7 @@
 #define WAVEFORM_ANALYSER_TB2_WAVEFORM_H
 
 
+
 struct WaveformSample {
     double timestamp;
     double phase_A_voltage;

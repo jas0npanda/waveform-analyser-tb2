@@ -45,10 +45,23 @@ struct WaveformSample* load_csv(const char *filename, int *out_count) {
 
     }
 
-
-
     fclose(fp);
     *out_count = count;
     return samples;
+}
 
+void write_results(const char *filename, //Calling from io.h
+               double rms_a, double rms_b, double rms_c,
+               double p2p_a, double p2p_b, double p2p_c,
+               double dc_a, double dc_b, double dc_c,
+               int clip_a, int clip_b, int clip_c) {
+    FILE *fp = fopen(filename, "w");
+    if (!fp) return;
+
+    fprintf(fp, "RMS A: %.15lf\nRMS B: %.15lf\nRMS C: %.15f\n", rms_a, rms_b, rms_c);
+    fprintf(fp, "Peak-to-Peak A: %.15f\nPeak-to-Peak B: %.15f\nPeak-to-Peak C: %.15f\n", p2p_a, p2p_b, p2p_c);
+    fprintf(fp, "DC Offset A: %.15f\nDC Offset B: %.15f\nDC Offset C: %.15f\n", dc_a, dc_b, dc_c);
+    fprintf(fp, "Clipping A: %d\nClipping B: %d\nClipping C: %d\n",clip_a, clip_b, clip_c);
+
+    fclose(fp);
 }
