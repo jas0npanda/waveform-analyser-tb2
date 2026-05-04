@@ -73,6 +73,11 @@ int main(int argc, char *argv[]) {
     printf("RMS C: %.8lf, Peak-to-Peak C: %.8lf, DC Offset C: %.20lf, Clipping values found in C: %d\n",
            rms_c, p2p_c, dc_c, clip_c);
 
+    free(a);
+    free(b);
+    free(c);
+    free(sample); //Free memory, prevents memory leak
+
     write_results("waveform_results.txt",
         rms_a, rms_b, rms_c,
         p2p_a, p2p_b, p2p_c,
@@ -80,10 +85,8 @@ int main(int argc, char *argv[]) {
         clip_a, clip_b, clip_c);
 
 
-    free(a);
-    free(b);
-    free(c);
-    free(sample); //Free memory
+    printf("Power quality log analysed successfully.\n");
+    printf("Results outputted to waveform_results.txt.\n");
 
     return 0;
 }

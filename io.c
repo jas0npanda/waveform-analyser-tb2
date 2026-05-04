@@ -9,7 +9,7 @@
 
 struct WaveformSample* load_csv(const char *filename, int *out_count) {
     //Loads csv file into array
-    FILE *fp = fopen("power_quality_log.csv", "r");
+    FILE *fp = fopen(filename, "r");
     if (!fp)
         return NULL;
 
